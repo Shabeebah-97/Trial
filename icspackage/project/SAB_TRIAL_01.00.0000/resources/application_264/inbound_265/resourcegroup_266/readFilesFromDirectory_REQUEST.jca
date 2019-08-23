@@ -1,0 +1,42 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/ftp/readFilesFromDirectory_REQUEST/types" name="readFilesFromDirectory_REQUESTPortType" adapter="ftp" wsdlLocation="readFilesFromDirectory_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="ics/FtpAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.tip.adapter.ftp.FTPManagedConnectionFactory">
+      <property name="DefaultDateFormat" value="MMM d yyyy"/>
+      <property name="csfkey" value="b806e01534feb441e05874448ac8a70863cc40b1c312ad64b1754ed2c684f0ed"/>
+      <property name="PreferredCipherSuite" value="aes128-cbc"/>
+      <property name="KeystoreAlgorithm" value="SunX509"/>
+      <property name="KeystoreType" value="PKCS12"/>
+      <property name="UseSftp" value="%%SAB_CONNECT_UseSftp"/>
+      <property name="KeepConnections" value="false"/>
+      <property name="SecurePort" value="990"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="ProxyType" value="http"/>
+      <property name="TransportProvider" value="socket"/>
+      <property name="Port" value="%%SAB_CONNECT_Port"/>
+      <property name="RecentDateFormat" value="MMM d HH:mm"/>
+      <property name="MftOptimization" value="false"/>
+      <property name="ListParserKey" value="UNIX"/>
+      <property name="SftpBlockSize" value="32768"/>
+      <property name="Host" value="%%SAB_CONNECT_Host"/>
+      <property name="ProxyPort" value=""/>
+      <property name="AuthenticationType" value="password"/>
+      <property name="UseProxy" value="false"/>
+      <property name="ProxyHost" value=""/>
+      <property name="ChangeDirectory" value="true"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="readFilesFromDirectory_REQUESTPortType" operation="ListFile">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPListInteractionSpec">
+      <property name="MaxRaiseSize" value="100"/>
+      <property name="ICSFilePull" value="true"/>
+      <property name="Recursive" value="true"/>
+      <property name="IncludeFiles" value=".*\.neu"/>
+      <property name="Operation" value="ListFile"/>
+      <property name="pluginVersion" value="19.3.1"/>
+      <property name="PhysicalDirectory" value="/home/sarvesh/INT002/IN"/>
+      <property name="IncludeFilesWildCard" value="*.neu"/>
+      <property name="OrderByLastModifiedTime" value="true"/>
+      <property name="MinimumAge" value="0"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

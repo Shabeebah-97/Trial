@@ -1,0 +1,16 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/file/WriteFileNames_REQUEST/types" name="WriteFileNames_REQUESTPortType" adapter="file" wsdlLocation="WriteFileNames_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="ics/FileAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.tip.adapter.file.FileManagedConnectionFactory"/>
+  </connection-factory>
+  <endpoint-interaction portType="WriteFileNames_REQUESTPortType" operation="Write" onpremise="true" agent="CGOS_223">
+    <interaction-spec className="oracle.tip.adapter.file.outbound.FileInteractionSpec">
+      <property name="FileNamingConvention" value="SAB%SEQ%.csv"/>
+      <property name="ICSUploadSchemaElementNameSpace" value="http://TargetNamespace.com/fileReference/WriteFileNames"/>
+      <property name="UnwrapRootElement" value="true"/>
+      <property name="PhysicalDirectory" value="/home/sarvesh/INT002/OUT"/>
+      <property name="Append" value="true"/>
+      <property name="ICSUploadSchemaElement" value="FileName"/>
+      <property name="OpaqueSchema" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>
